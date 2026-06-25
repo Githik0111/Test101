@@ -3,217 +3,1060 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bright Smile Dental - Professional Dental Care</title>
-    <link rel="stylesheet" href="dentist-website/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Pavan Dental Hospital — Trusted Dental Care in Hayathnagar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --teal: #0D7377;
+            --teal-dark: #094B4E;
+            --teal-light: #14A098;
+            --mint: #CBF3F0;
+            --mint-light: #E8F7F6;
+            --white: #FFFFFF;
+            --off-white: #F8FAFB;
+            --text: #1E293B;
+            --text-light: #64748B;
+            --accent: #FF6B6B;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background: var(--off-white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(13, 115, 119, 0.08);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--teal-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i { color: var(--teal); }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 2px;
+            background: var(--teal);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: var(--teal); }
+
+        .mobile-menu { display: none; font-size: 1.5rem; cursor: pointer; }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, var(--mint-light) 0%, var(--off-white) 50%, #E0F2F1 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%; right: -20%;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, var(--mint) 0%, transparent 70%);
+            opacity: 0.5;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%; left: -10%;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, var(--teal-light) 0%, transparent 70%);
+            opacity: 0.15;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+
+        .hero-content { position: relative; z-index: 1; max-width: 800px; }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--teal);
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            color: var(--teal-dark);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero h1 span {
+            color: var(--teal);
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--teal);
+            color: white;
+            box-shadow: 0 4px 15px rgba(13, 115, 119, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(13, 115, 119, 0.4);
+            background: var(--teal-dark);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--teal-dark);
+            border: 2px solid var(--teal);
+        }
+
+        .btn-outline:hover {
+            background: var(--teal);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .btn-urgent {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .btn-urgent:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+            background: #E55A5A;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3); }
+            50% { box-shadow: 0 4px 25px rgba(255, 107, 107, 0.5); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section Styles */
+        section { padding: 6rem 5%; }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--teal-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+        }
+
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: var(--teal);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* About */
+        .about {
+            background: white;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 6rem 5%;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(13, 115, 119, 0.12);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img { transform: scale(1.05); }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(13, 115, 119, 0.3), transparent);
+            z-index: 1;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            color: var(--teal-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .feature-item i {
+            font-size: 1.3rem;
+            color: var(--teal);
+            margin-top: 0.2rem;
+            width: 24px;
+        }
+
+        .feature-item h4 {
+            font-size: 1rem;
+            color: var(--teal-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Services */
+        .services { background: var(--mint-light); }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 20px rgba(13, 115, 119, 0.06);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            text-align: center;
+            border: 1px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(13, 115, 119, 0.12);
+            border-color: var(--mint);
+        }
+
+        .service-icon {
+            width: 70px; height: 70px;
+            border-radius: 50%;
+            background: var(--mint-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            color: var(--teal);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--teal);
+            color: white;
+            transform: rotateY(360deg);
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            color: var(--teal-dark);
+            margin-bottom: 0.8rem;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Why Choose Us */
+        .why-us { background: white; }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .why-card {
+            background: var(--off-white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            border-left: 4px solid var(--teal);
+        }
+
+        .why-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(13, 115, 119, 0.08);
+        }
+
+        .why-card i {
+            font-size: 2.5rem;
+            color: var(--teal);
+            margin-bottom: 1rem;
+        }
+
+        .why-card h3 {
+            font-size: 1.2rem;
+            color: var(--teal-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .why-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Testimonials */
+        .testimonials { background: var(--off-white); }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            position: relative;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 20px rgba(13, 115, 119, 0.06);
+        }
+
+        .testimonial-card:hover { transform: translateY(-5px); }
+
+        .testimonial-card::before {
+            content: '"';
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: var(--mint);
+            position: absolute;
+            top: 10px; left: 20px;
+            line-height: 1;
+        }
+
+        .testimonial-card p {
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            background: var(--mint);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--teal-dark);
+        }
+
+        .author-info h4 {
+            color: var(--teal-dark);
+            font-size: 1rem;
+        }
+
+        .author-info span {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .stars { color: #FFB800; margin-bottom: 1rem; }
+
+        /* Contact / Location */
+        .contact {
+            background: var(--teal-dark);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: -100px; right: -100px;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, var(--teal) 0%, transparent 70%);
+            opacity: 0.2;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--mint);
+        }
+
+        .contact-info p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-item i {
+            font-size: 1.3rem;
+            color: var(--teal-light);
+            margin-top: 0.2rem;
+            width: 24px;
+        }
+
+        .contact-item h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            color: white;
+        }
+
+        .contact-item p, .contact-item a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .contact-item a:hover { color: var(--mint); }
+
+        .map-container {
+            background: rgba(255,255,255,0.08);
+            border-radius: 20px;
+            overflow: hidden;
+            height: 100%;
+            min-height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .map-placeholder {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .map-placeholder i {
+            font-size: 3rem;
+            color: var(--teal-light);
+            margin-bottom: 1rem;
+        }
+
+        .map-placeholder p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 1rem;
+        }
+
+        .map-btn {
+            background: var(--teal);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .map-btn:hover {
+            background: var(--mint);
+            color: var(--teal-dark);
+            transform: scale(1.05);
+        }
+
+        .emergency-banner {
+            background: var(--accent);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .emergency-banner i { font-size: 1.5rem; }
+
+        .emergency-banner h4 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .emergency-banner a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #082D2F;
+            color: rgba(255,255,255,0.6);
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--mint);
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            width: 45px; height: 45px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--teal);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Scroll animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile */
+        @media (max-width: 900px) {
+            .about, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-image { order: -1; }
+            .nav-links { display: none; }
+            .mobile-menu { display: block; }
+        }
+
+        @media (max-width: 600px) {
+            .features { grid-template-columns: 1fr; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 280px; justify-content: center; }
+            section { padding: 4rem 5%; }
+            .emergency-banner { flex-direction: column; text-align: center; }
+        }
+    </style>
 </head>
 <body>
+
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <i class="fas fa-tooth"></i>
-                <span>Bright Smile Dental</span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
+    <nav id="navbar">
+        <div class="logo"><i class="fas fa-tooth"></i> Pavan Dental</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#why-us">Why Us</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#contact">Visit Us</a></li>
+        </ul>
+        <div class="mobile-menu"><i class="fas fa-bars"></i></div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
+    <!-- Hero -->
+    <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Welcome to Bright Smile Dental</h1>
-            <p>Your trusted partner for exceptional dental care</p>
-            <a href="#contact" class="btn btn-primary">Book an Appointment</a>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2>Our Services</h2>
-            <p class="section-subtitle">Comprehensive dental care for the whole family</p>
-            <div class="services-grid">
-                <div class="service-card">
-                    <i class="fas fa-brush"></i>
-                    <h3>Professional Cleaning</h3>
-                    <p>Regular cleanings and plaque removal to keep your teeth healthy and bright.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-tooth"></i>
-                    <h3>Fillings</h3>
-                    <p>Tooth-colored fillings to restore decayed teeth and maintain natural appearance.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-crown"></i>
-                    <h3>Root Canal Treatment</h3>
-                    <p>Save your tooth with our painless and effective root canal procedures.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-sparkles"></i>
-                    <h3>Cosmetic Dentistry</h3>
-                    <p>Brighten your smile with teeth whitening, veneers, and more.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-smile"></i>
-                    <h3>Dental Implants</h3>
-                    <p>Replace missing teeth with natural-looking, durable dental implants.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-child"></i>
-                    <h3>Pediatric Dentistry</h3>
-                    <p>Gentle and caring dental care for children of all ages.</p>
-                </div>
+            <div class="hero-badge"><i class="fas fa-star"></i> Trusted Dental Care in Hayathnagar</div>
+            <h1>Pavan <span>Dental Hospital</span></h1>
+            <p>Your smile is our passion. From routine check-ups to advanced dental procedures, we provide gentle, affordable, and world-class dental care right here in Hayathnagar.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Book Appointment</a>
+                <a href="tel:+919876543210" class="btn btn-urgent"><i class="fas fa-phone-alt"></i> Emergency Call</a>
+                <a href="#services" class="btn btn-outline"><i class="fas fa-list"></i> Our Services</a>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2>About Our Practice</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Your Smile is Our Priority</h3>
-                    <p>At Bright Smile Dental, we've been providing exceptional dental care to our community for over 20 years. Our team of highly trained dentists and hygienists are committed to giving you the best possible care in a comfortable and welcoming environment.</p>
-                    <p>We use the latest technology and techniques to ensure your dental health and comfort. Whether you need a routine checkup or a complex procedure, we're here to help you achieve and maintain a healthy, beautiful smile.</p>
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="about-content reveal">
+            <h2>Your Trusted Dental Partner<br>in Hayathnagar</h2>
+            <p>At Pavan Dental Hospital, we believe everyone deserves a healthy, confident smile. Located conveniently on the 1st Floor opposite Srinivasa Hospital, our clinic combines modern dental technology with compassionate care.</p>
+            <p>Our experienced team of dentists and specialists offer everything from preventive care to complex restorative treatments — all under one roof. We use sterilized equipment, painless techniques, and personalized treatment plans to ensure your comfort at every visit.</p>
+            <div class="features">
+                <div class="feature-item">
+                    <i class="fas fa-user-md"></i>
+                    <div>
+                        <h4>Expert Dentists</h4>
+                        <p>Highly qualified and experienced dental professionals</p>
+                    </div>
                 </div>
-                <div class="team">
-                    <h3>Meet Our Team</h3>
-                    <div class="team-members">
-                        <div class="member">
-                            <img src="https://via.placeholder.com/150" alt="Dr. John Smith">
-                            <h4>Dr. John Smith</h4>
-                            <p>DDS, Practice Owner</p>
-                        </div>
-                        <div class="member">
-                            <img src="https://via.placeholder.com/150" alt="Dr. Sarah Johnson">
-                            <h4>Dr. Sarah Johnson</h4>
-                            <p>DDS, Cosmetic Specialist</p>
-                        </div>
-                        <div class="member">
-                            <img src="https://via.placeholder.com/150" alt="Lisa Chen">
-                            <h4>Lisa Chen</h4>
-                            <p>Registered Dental Hygienist</p>
-                        </div>
+                <div class="feature-item">
+                    <i class="fas fa-shield-virus"></i>
+                    <div>
+                        <h4>100% Sterile</h4>
+                        <p>Autoclaved instruments and strict hygiene protocols</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <div>
+                        <h4>Affordable Care</h4>
+                        <p>Quality treatment at prices that fit your budget</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-smile-beam"></i>
+                    <div>
+                        <h4>Painless Procedures</h4>
+                        <p>Advanced anesthesia and gentle techniques</p>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="about-image reveal">
+            <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80" alt="Modern dental clinic">
+        </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
-        <div class="container">
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="section-header reveal">
+            <h2>Our Dental Services</h2>
+            <div class="divider"></div>
+            <p>Comprehensive dental solutions for the whole family — from kids to seniors.</p>
+        </div>
+        <div class="service-grid">
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-teeth"></i></div>
+                <h3>General Dentistry</h3>
+                <p>Regular check-ups, cleanings, fillings, and preventive care to keep your teeth healthy and strong.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-teeth-open"></i></div>
+                <h3>Root Canal Treatment</h3>
+                <p>Painless root canal therapy using advanced techniques to save your natural tooth and relieve pain.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-tooth"></i></div>
+                <h3>Dental Implants</h3>
+                <p>Permanent tooth replacement solutions that look, feel, and function like natural teeth.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-magic"></i></div>
+                <h3>Teeth Whitening</h3>
+                <p>Professional whitening treatments to brighten your smile safely and effectively in just one visit.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-align-center"></i></div>
+                <h3>Braces & Aligners</h3>
+                <p>Metal braces, ceramic braces, and invisible aligners for straighter teeth at any age.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-crown"></i></div>
+                <h3>Crowns & Bridges</h3>
+                <p>Custom-fitted crowns and bridges to restore damaged or missing teeth with precision.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-baby"></i></div>
+                <h3>Pediatric Dentistry</h3>
+                <p>Child-friendly dental care in a comfortable environment to build healthy habits early.</p>
+            </div>
+            <div class="service-card reveal">
+                <div class="service-icon"><i class="fas fa-cut"></i></div>
+                <h3>Oral Surgery</h3>
+                <p>Wisdom tooth removal, extractions, and minor surgical procedures with minimal discomfort.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us" id="why-us">
+        <div class="section-header reveal">
+            <h2>Why Choose Pavan Dental?</h2>
+            <div class="divider"></div>
+            <p>We go the extra mile to make your dental experience comfortable and stress-free.</p>
+        </div>
+        <div class="why-grid">
+            <div class="why-card reveal">
+                <i class="fas fa-clock"></i>
+                <h3>Flexible Timings</h3>
+                <p>Open 7 days a week with morning and evening slots to fit your busy schedule.</p>
+            </div>
+            <div class="why-card reveal">
+                <i class="fas fa-certificate"></i>
+                <h3>Certified Experts</h3>
+                <p>Our dentists are MDS/BDS qualified with years of clinical experience.</p>
+            </div>
+            <div class="why-card reveal">
+                <i class="fas fa-microscope"></i>
+                <h3>Modern Equipment</h3>
+                <p>Digital X-rays, laser dentistry, and the latest tools for accurate diagnosis.</p>
+            </div>
+            <div class="why-card reveal">
+                <i class="fas fa-heart"></i>
+                <h3>Patient-First Care</h3>
+                <p>We listen, explain, and involve you in every step of your treatment plan.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-header reveal">
             <h2>What Our Patients Say</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p>"Dr. Smith and his team made my root canal experience painless and comfortable. Highly recommended!"</p>
-                    <h4>Michael Rodriguez</h4>
+            <div class="divider"></div>
+            <p>Real smiles from real patients across Hayathnagar and beyond.</p>
+        </div>
+        <div class="testimonial-grid">
+            <div class="testimonial-card reveal">
+                <div class="stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
-                <div class="testimonial-card">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                <p>I was terrified of dentists, but the team at Pavan Dental made me feel so comfortable. My root canal was completely painless. Highly recommend!</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SK</div>
+                    <div class="author-info">
+                        <h4>Suresh Kumar</h4>
+                        <span>Root Canal Patient</span>
                     </div>
-                    <p>"The teeth whitening results were amazing! My smile looks so much brighter and I feel more confident."</p>
-                    <h4>Emma Wilson</h4>
                 </div>
-                <div class="testimonial-card">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p>Got my braces done here and the results are amazing! The doctors are patient, the clinic is spotless, and the pricing is very reasonable.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">LP</div>
+                    <div class="author-info">
+                        <h4>Lakshmi Priya</h4>
+                        <span>Braces Patient</span>
                     </div>
-                    <p>"Great staff, clean facility, and fair prices. My whole family gets their dental care here."</p>
-                    <h4>James Thompson</h4>
+                </div>
+            </div>
+            <div class="testimonial-card reveal">
+                <div class="stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>Best dental clinic in Hayathnagar. My entire family comes here now — from my kids' cleanings to my father's dentures. Truly a one-stop solution.</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">RM</div>
+                    <div class="author-info">
+                        <h4>Ramesh Murthy</h4>
+                        <span>Family Patient</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="info-item">
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="contact-grid">
+            <div class="contact-info reveal">
+                <h2>Visit Pavan Dental</h2>
+                <p>Your journey to a healthier smile starts with a single visit. Book your appointment today or walk in for a consultation.</p>
+                <div class="contact-details">
+                    <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
-                            <h4>Location</h4>
-                            <p>123 Dental Street<br>Smile City, SC 12345</p>
+                            <h4>Address</h4>
+                            <p>1st Floor, Opposite Srinivasa Hospital,<br>Veerbhadra Colony, IPM Blood Bank Colony,<br>Hayathnagar Khalsa, Hyderabad,<br>Telangana 501505</p>
                         </div>
                     </div>
-                    <div class="info-item">
-                        <i class="fas fa-phone"></i>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Opening Hours</h4>
+                            <p>Mon – Sat: 9:00 AM – 9:00 PM<br>Sunday: 10:00 AM – 2:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
                         <div>
                             <h4>Phone</h4>
-                            <p>(555) 123-4567</p>
+                            <a href="tel:+919876543210">+91 98765 43210</a>
                         </div>
                     </div>
-                    <div class="info-item">
+                    <div class="contact-item">
                         <i class="fas fa-envelope"></i>
                         <div>
                             <h4>Email</h4>
-                            <p>info@brightsmilodental.com</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <h4>Hours</h4>
-                            <p>Mon - Fri: 8:00 AM - 6:00 PM<br>Sat: 9:00 AM - 2:00 PM<br>Sun: Closed</p>
+                            <a href="mailto:contact@pavandental.in">contact@pavandental.in</a>
                         </div>
                     </div>
                 </div>
-                <form class="contact-form" id="appointmentForm">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <input type="tel" placeholder="Your Phone" required>
-                    <input type="date" placeholder="Preferred Date" required>
-                    <textarea placeholder="Message or Service Interest" rows="4"></textarea>
-                    <button type="submit" class="btn btn-primary">Book Appointment</button>
-                </form>
+                <div class="emergency-banner">
+                    <i class="fas fa-ambulance"></i>
+                    <div>
+                        <h4>Dental Emergency? Call Now</h4>
+                        <a href="tel:+919876543210">+91 98765 43210</a>
+                    </div>
+                </div>
+            </div>
+            <div class="map-container reveal">
+                <div class="map-placeholder">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <p>Find Pavan Dental Hospital<br>on Google Maps</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Pavan+Dental+Hospital+Hayathnagar+Hyderabad" target="_blank" class="map-btn">
+                        <i class="fas fa-directions"></i> Open in Maps
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Bright Smile Dental. All rights reserved.</p>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo"><i class="fas fa-tooth"></i> Pavan Dental Hospital</div>
+            <p>Trusted dental care for families in Hayathnagar, Hyderabad</p>
             <div class="social-links">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-google"></i></a>
+            </div>
+            <div class="copyright">
+                © 2026 Pavan Dental Hospital. All rights reserved.<br>
+                <small>1st Floor, Opp. Srinivasa Hospital, Hayathnagar, Hyderabad 501505</small>
             </div>
         </div>
     </footer>
 
-    <script src="dentist-website/script.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+
 </body>
 </html>
