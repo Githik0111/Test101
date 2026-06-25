@@ -406,6 +406,40 @@
             line-height: 1.6;
         }
 
+        /* Gallery */
+        .gallery {
+            background: white;
+            padding: 6rem 5%;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(13, 115, 119, 0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+
         /* Why Choose Us */
         .why-us { background: white; }
 
@@ -751,8 +785,8 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
             <li><a href="#why-us">Why Us</a></li>
-            <li><a href="#testimonials">Reviews</a></li>
             <li><a href="#contact">Visit Us</a></li>
         </ul>
         <div class="mobile-menu"><i class="fas fa-bars"></i></div>
@@ -766,7 +800,7 @@
             <p>Your smile is our passion. From routine check-ups to advanced dental procedures, we provide gentle, affordable, and world-class dental care right here in Hayathnagar.</p>
             <div class="hero-buttons">
                 <a href="#contact" class="btn btn-primary"><i class="fas fa-calendar-check"></i> Book Appointment</a>
-                <a href="tel:+919876543210" class="btn btn-urgent"><i class="fas fa-phone-alt"></i> Emergency Call</a>
+                <a href="https://wa.me/919876543210" class="btn btn-urgent"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
                 <a href="#services" class="btn btn-outline"><i class="fas fa-list"></i> Our Services</a>
             </div>
         </div>
@@ -810,7 +844,7 @@
             </div>
         </div>
         <div class="about-image reveal">
-            <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80" alt="Modern dental clinic">
+            <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAE0jT-hcUNZaewVNIT3jshIDLhoPcN13_7i0vlpWdSdaA6tBc0dhmQdf8ALayQnGn8lRtVuCXE94CgDA_EsCcnrPOKUiiWEvSy1klWDcTE928vNLbqopZwHf9jUuqft3eVxIeY=s1360-w1360-h1020-rw" alt="Pavan Dental Reception Area">
         </div>
     </section>
 
@@ -861,6 +895,23 @@
                 <div class="service-icon"><i class="fas fa-cut"></i></div>
                 <h3>Oral Surgery</h3>
                 <p>Wisdom tooth removal, extractions, and minor surgical procedures with minimal discomfort.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery" id="gallery">
+        <div class="section-header reveal">
+            <h2>Our Clinic</h2>
+            <div class="divider"></div>
+            <p>Experience the modern facilities and comfortable environment at Pavan Dental Hospital.</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item reveal">
+                <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAE0jT-hcUNZaewVNIT3jshIDLhoPcN13_7i0vlpWdSdaA6tBc0dhmQdf8ALayQnGn8lRtVuCXE94CgDA_EsCcnrPOKUiiWEvSy1klWDcTE928vNLbqopZwHf9jUuqft3eVxIeY=s1360-w1360-h1020-rw" alt="Reception Area">
+            </div>
+            <div class="gallery-item reveal">
+                <img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHy_iIEWgpaFKISml9muHBL2pMjxQZYSNhSlE98aOsHSaVtYwYpyM8LCHLg4nhmN6OgH45Ly77-7506HrQgOAtZzngAEKaPbXF7H5EYejZNlEYLq1QHLd47TciWmB6UbMc00jg=s1360-w1360-h1020-rw" alt="Treatment Room">
             </div>
         </div>
     </section>
@@ -975,6 +1026,13 @@
                         </div>
                     </div>
                     <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <a href="https://wa.me/919876543210">+91 98765 43210</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
                         <i class="fas fa-envelope"></i>
                         <div>
                             <h4>Email</h4>
@@ -1008,10 +1066,10 @@
             <div class="footer-logo"><i class="fas fa-tooth"></i> Pavan Dental Hospital</div>
             <p>Trusted dental care for families in Hayathnagar, Hyderabad</p>
             <div class="social-links">
+                <a href="https://wa.me/919876543210" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://instagram.com/pavandental" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
-                <a href="#"><i class="fab fa-google"></i></a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Pavan+Dental+Hospital+Hayathnagar+Hyderabad" target="_blank"><i class="fab fa-google"></i></a>
             </div>
             <div class="copyright">
                 © 2026 Pavan Dental Hospital. All rights reserved.<br>
